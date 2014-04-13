@@ -20,3 +20,7 @@ sudo apt-get autoremove –purge
 ```
 sudo apt-get install python3-picamera
 ```
+* Clone this Repo
+```
+git clone https://github.com/jimlind/PiTrackCam.git
+```
