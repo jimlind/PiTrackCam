@@ -1,11 +1,13 @@
 #!/bin/sh
 
-mkdir /media/USB
+# Try to create folder to mount USB drive to
+mkdir -p /media/USB
 
-drive=$(find /sys/block/sd* | head -1)
-echo "$drive"
+# Find available drive
+path=$(find /sys/block/sd* | head -1)
+drive=${path##*/}
 
-echo ${drive##>*/}
+echo "Drive: $drive"
 
 exit 0
 
