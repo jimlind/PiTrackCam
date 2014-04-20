@@ -8,18 +8,27 @@ mkdir -p $mountpath 2> /dev/null
 
 # Find available drive
 # Hide errors
-path=$(find /sys/block/sd* 2> /dev/null | head -1 )
+path="$(find /sys/block/sd* 2> /dev/null | head -1 )"
 drive=${path##*/}
 
+# Exit if no drives available
 if [ -z "$drive" ]
 then
     echo "Not able to find a worthwhile drive."
     exit 0
 fi
 
+# Attempt mounting drive
+# Hide errors
 echo "Mounting $drive to $mountpath"
-mount -t vfat /dev/${drive}1 $mountpath
+mount -t vfat -o uid=pi,gid=pi /dev/${drive}1 $mountpath 2> /dev/null
 
+mountresults="$(mountpoint $mountpath )"
+echo mountresults
+if [ "$mountresults" == "$mountpath is a mountpoint" ]
+then
+    echo "MATCHES!"
+fi
 exit 0
 
 python /home/pi/capture/work.py
