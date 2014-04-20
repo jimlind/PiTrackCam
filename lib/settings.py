@@ -12,7 +12,7 @@ class Settings:
     command_prefix = 'raspistill -sh 0 -co 0 -br 50 -sa 0 -ev 0 -ifx none -t 1000 -w 400 -h 400 -n'
     storage = '/tmp/'
 
-    def __init__():
+    def __init__(self):
         self.storage = Temp.gettempdir()
 
     def get_auto(self):
