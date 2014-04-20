@@ -24,11 +24,13 @@ echo "Mounting $drive to $mountpath"
 mount -t vfat -o uid=pi,gid=pi /dev/${drive}1 $mountpath 2> /dev/null
 
 mountresults="$(mountpoint $mountpath )"
-echo mountresults
-if [ "$mountresults" == "$mountpath is a mountpoint" ]
+if [ "$mountresults" != "$mountpath is a mountpoint" ]
 then
-    echo "MATCHES!"
+    echo "Not able to mount the drive"
+    exit 0
 fi
+
+echo "Everything went great"
 exit 0
 
 python /home/pi/capture/work.py
