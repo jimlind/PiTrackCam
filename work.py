@@ -6,19 +6,27 @@ from os           import listdir as list_dir
 from os           import mkdir   as make_dir
 from os.path      import exists  as path_exists
 from os.path      import ismount as is_path_mount
-from sys          import exit as system_exit
+from sys          import argv    as arguments
+from sys          import exit    as system_exit
 
 import RPi.GPIO as PinIO
 import time     as Time
 
-# Define configs
+# Default configuration
 cycles_per_photo = 5
 stepper_wait = 0.010
 photo_wait = 5
 
-# Make sure a flash drive is loaded
-external_USB = '/media/USB'
+# Check arguments
+if len(arguments) !== 2:
+    print 'Incorrect agrument count. Must include location.'
+    system_exit(0)
+
+# Make sure a drive is mounted
+external_USB = arguments[1]
 if not is_path_mount(external_USB):
+    print external_USB
+    print 'Location is not a mounted drive.'
     system_exit(0)
 
 # Make sure saving folder exists
@@ -109,7 +117,7 @@ while 1==1:
 
     # Take photo based on cycle counter
     if (cycle_counter == cycles_per_photo):
-        # Make sure saving folder exists 
+        # Make sure saving folder exists
         sub_folder = frames_dir + '/' + str(int(ceil(photo_counter / 1000)))
         if (not path_exists(sub_folder)):
             make_dir(sub_folder, 0777)

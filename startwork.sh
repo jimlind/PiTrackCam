@@ -30,7 +30,4 @@ then
     exit 0
 fi
 
-echo "Everything went great"
-exit 0
-
-python /home/pi/capture/work.py
+python /home/pi/capture/work.py $mountpath
