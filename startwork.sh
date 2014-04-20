@@ -6,10 +6,10 @@ mkdir -p /media/USB 2> /dev/null
 
 # Find available drive
 # Hide errors
-path=$(find /sys/block/sd* | head -1 2> /dev/null)
+path=$(find /sys/block/sd* 2> /dev/null | head -1 )
 drive=${path##*/}
 
-if [ -z "$drive"]
+if [ -z "$drive" ]
 then
     echo "Not able to find a worthwhile drive."
     exit 0
