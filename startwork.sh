@@ -30,4 +30,4 @@ then
     exit 0
 fi
 
-python /home/pi/capture/work.py $mountpath
+python work.py $mountpath

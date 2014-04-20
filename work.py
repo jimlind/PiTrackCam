@@ -18,7 +18,7 @@ stepper_wait = 0.010
 photo_wait = 5
 
 # Check arguments
-if len(arguments) !== 2:
+if len(arguments) != 2:
     print 'Incorrect agrument count. Must include location.'
     system_exit(0)
 
