@@ -25,7 +25,6 @@ if len(arguments) != 2:
 # Make sure a drive is mounted
 external_USB = arguments[1]
 if not is_path_mount(external_USB):
-    print external_USB
     print 'Location is not a mounted drive.'
     system_exit(0)
 

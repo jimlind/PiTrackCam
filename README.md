@@ -18,7 +18,7 @@ sudo apt-get autoremove –purge
 ```
 * Add Python Camera Support
 ```
-sudo apt-get install python3-picamera
+sudo apt-get install python-picamera python-imaging
 ```
 * Clone this Repo
 ```
