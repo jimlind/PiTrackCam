@@ -1,11 +1,20 @@
 #!/bin/sh
 
 # Try to create folder to mount USB drive to
-mkdir -p /media/USB
+# Hide errors
+mkdir -p /media/USB 2> /dev/null
 
 # Find available drive
-path=$(find /sys/block/sd* | head -1)
+# Hide errors
+path=$(find /sys/block/sd* | head -1 2> /dev/null)
 drive=${path##*/}
+
+if [ -z "$drive"]
+then
+    echo "Not able to find a worthwhile drive."
+    exit 0
+fi
+
 
 echo "Drive: $drive"
 
