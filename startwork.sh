@@ -1,8 +1,10 @@
 #!/bin/sh
 
+mountpath = "/media/USB"
+
 # Try to create folder to mount USB drive to
 # Hide errors
-mkdir -p /media/USB 2> /dev/null
+mkdir -p $mountpath 2> /dev/null
 
 # Find available drive
 # Hide errors
@@ -15,8 +17,8 @@ then
     exit 0
 fi
 
-
-echo "Drive: $drive"
+echo "Mounting $drive to $mountpath"
+mount /dev/$drives $mountpath
 
 exit 0
 
