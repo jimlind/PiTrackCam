@@ -30,4 +30,5 @@ then
     exit 0
 fi
 
-python work.py $mountpath
+directory=$(dirname $0 )
+python ${directory}/work.py $mountpath
