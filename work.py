@@ -38,8 +38,8 @@ PinIO.setwarnings(False)
 PinIO.setmode(PinIO.BCM)
 
 # Define GPIO signals to use
-# Pins [11, 12, 13, 15] => [GPIO17, GPIO18, GPI21, GPI22]
-step_pins = [17,18,27,22]
+# Pins [11, 13, 15, 16] => [GPIO17, GPIO27, GPI22, GPI23]
+step_pins = [17,27,22,23]
 
 # Set all pins as output
 for pin in step_pins:
